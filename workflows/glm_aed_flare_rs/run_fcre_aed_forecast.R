@@ -68,7 +68,11 @@ run_fcre_aed_forecast <- function(config_set_name    = "glm_aed_flare_rs",
   message(paste0("inflow ready: ", inflow_ready))
 
   loop_start <- Sys.time()
-  loop_budget_seconds <- 5.5 * 60 * 60
+  # Bounded demo run (flare_nrp_demo): cap the forecast loop well below the K8s
+  # action TimeLimit so the action exits gracefully with a restart written
+  # (Job -> Complete) instead of being killed at the deadline (DeadlineExceeded).
+  # The full backfill uses 5.5h here; restore that for production runs.
+  loop_budget_seconds <- 10 * 60
 
   while (noaa_ready & inflow_ready) {
 
