@@ -3,7 +3,7 @@ start_datetime: 2026-05-20 00:00:00
 end_datetime: .na
 forecast_start_datetime: 2026-05-24 00:00:00
 forecast_horizon: 1
-sim_name: glm_aed_flare_rs_nrp_demo
+sim_name: glm_aed_flare_rs_nrp_clean
 configure_flare: configure_flare_glm_aed.yml
 configure_obs: observation_processing.yml
 use_s3: TRUE
